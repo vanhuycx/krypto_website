@@ -5,3 +5,8 @@
 ## Introduction
 
 Using Web 3.0 methodologies, Solidity and Metamask, I build my first real Web 3.0 Application - from start to finish.
+
+Steps to initilize and run the project: 
+1. cd ./client
+2. npm install
+3. npm run dev 
