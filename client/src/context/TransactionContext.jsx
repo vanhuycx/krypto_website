@@ -6,6 +6,7 @@ export const TransactionContext = React.createContext();
 
 const {ethereum} = window;
 
+
 const getEthereumContract = () => {
     const provider = new ethers.providers.Web3Provider(ethereum);
     const signer = provider.getSigner();
@@ -60,21 +61,24 @@ export const TransactionProvider = ({children}) => {
         try {
             
             if (!ethereum) {
-                return (
+                return (  
                     alert('Please install Metamask wallet')
                 )
-            }
-
-            const accounts = await ethereum.request({method:'eth_accounts'});
-
-            if (accounts.length) {
-                setCurrentAccount(accounts[0]);
-
-                getAllAvailableTransactions();
             } else {
-                console.log('No account found')
+                console.log('Have ')
+                const accounts = await ethereum.request({method:'eth_accounts'});
+
+                if (accounts.length) {
+                    setCurrentAccount(accounts[0]);
+
+                    getAllAvailableTransactions();
+                } else {
+                    console.log('No account found')
+                }
+                console.log(accounts)
             }
-            console.log(accounts)
+
+            
             
         } catch (error) {
             console.log(error)
@@ -84,6 +88,7 @@ export const TransactionProvider = ({children}) => {
 
     const checkIfTransactionExist = async () => {
         try {
+            
             const transactionContract = getEthereumContract();
             const transactionCount = await transactionContract.getTransactionCount();
             window.localStorage.setItem('transactionCount',transactionCount)
@@ -153,6 +158,7 @@ export const TransactionProvider = ({children}) => {
     useEffect(() => {
       checkIfWalletIsConnected();
       checkIfTransactionExist();
+      
     }, [])
 
 
