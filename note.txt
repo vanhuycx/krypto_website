@@ -1,0 +1,8 @@
+1/ Vite to create fast React project
+npm init vite@latest
+npm install
+npm run dev
+2/ Tailwind - css framework utility
+tailwind set up: https://tailwindcss.com/docs/guides/create-react-app
+3/ cd to smart_contract folder: 
+run npm init -y to initialize a dummy packake.json
